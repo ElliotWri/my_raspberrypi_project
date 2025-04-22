@@ -1,7 +1,7 @@
 import smtplib
 
-GMAIL_USER = 'your email address'
-GMAIL_PASS = 'your password'
+GMAIL_USER = 'groupernamer@gmail.com'
+GMAIL_PASS = 'kjyh mkta said cwef'
 SMTP_SERVER = 'smtp.gmail.com' # or other SMTP server
 SMTP_PORT = 587
 
@@ -17,4 +17,4 @@ def send_email(recipient, subject, text):
     smtpserver.sendmail(GMAIL_USER, recipient, msg)
     smtpserver.close()
 
-send_email('destination email address', 'subject', 'message')
+send_email('ewrigh34@depaul.edu', 'Test for Class', 'If me recieve this message the Email worked')
