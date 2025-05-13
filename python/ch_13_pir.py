@@ -1,4 +1,5 @@
 from gpiozero import MotionSensor,Buzzer
+import time
 buzzer= Buzzer(18)
 def buzz(pitch, duration):
     period = 1.0 / pitch
@@ -10,4 +11,5 @@ pir = MotionSensor(23)
 while True:
     pir.wait_for_motion()
     print("Motion detected!")
-    buzz(100,1)
+    buzz(20,0.25)
+    time.sleep(0.3)

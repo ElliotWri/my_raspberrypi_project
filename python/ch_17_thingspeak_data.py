@@ -1,22 +1,24 @@
-import time, os 
+import time, os
 import requests
+from gpiozero import CPUTemperature
 
 
 PERIOD = 60 # seconds
 BASE_URL = 'https://api.thingspeak.com/update.json'
-KEY = 'your key goes here'
+KEY = '6R1H2RF39T5FWJIU'
 
 def send_data(temp):
     data = {'api_key' : KEY, 'field1' : temp}
     response = requests.post(BASE_URL, json=data)
 
 def cpu_temp():
-    dev = os.popen('/opt/vc/bin/vcgencmd measure_temp')
-    cpu_temp = dev.read()[5:-3]
-    return float(cpu_temp)
+    cpu_temp = CPUTemperature()
+    return cpu_temp.temperature
+
 
 while True:
     temp = cpu_temp()
     print("CPU Temp (C): " + str(temp))
     send_data(temp)
     time.sleep(PERIOD)
+
